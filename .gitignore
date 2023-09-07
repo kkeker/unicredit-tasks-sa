@@ -1,2 +1,4 @@
 *.dtmp
 *.bkp
+.vscode
+*.DS_Store

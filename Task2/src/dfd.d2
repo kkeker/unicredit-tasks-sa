@@ -1,0 +1,134 @@
+Управление уведомлениями: {
+    externalEntity1: ДБО
+    externalEntity2: Call Center
+    dataStore: Перечень услуг клиента
+    dataStore.shape: Parallelogram
+    process: Активация/деактивация услуг подписки
+    process.shape: Circle
+
+    externalEntity1 -> process: Управление услугой
+    externalEntity2 -> process: Управление услугой
+    process -> dataStore: pgsql/изменение услуг
+    dataStore -> process: pgsql/состояние услуг
+}
+
+Тарификация услуг: {
+    externalEntity1: Биллинг
+    externalEntity2: АБС
+    dataStore1: Перечень услуг клиента, тарифы и их учет
+    dataStore1.shape: Parallelogram
+    dataStore2: Главная книга банка, списание средств за услуги
+    dataStore2.shape: Parallelogram
+    process1: Тарификация оказанных услуг
+    process1.shape: Circle
+    process2: Списание средств за оказанные услуги со счета в Банке
+    process2.shape: Circle
+    process3: Отправка потока изменений объектной модели данных услуг клиентов
+    process3.shape: Circle
+
+    externalEntity1 -> process1: Тарификация оказанных услуг
+    externalEntity1 -> process1: Тарификация оказанных услуг
+    externalEntity1 -> externalEntity2: kafka/асинхронный nrt-процесс тарификации
+    externalEntity1 -> externalEntity2: pgsql/синхронный отчетный процесс через витрины данных Платформы данных
+    process1 -> dataStore1: pgsql/изменение счетчиков услуг
+    process2 -> dataStore2: pgsql/изменение состояния счета
+    dataStore1 -> process1: pgsql/состояние услуг
+    dataStore1 -> process1: pgsql/состояние счета
+    externalEntity1 -> process3: kafka/поток изменений объектной модели данных услуг
+}
+
+Уведомители {
+    externalEntity1: ДБО
+    externalEntity2: Биллинг
+    externalEntity3: АБС
+    externalEntity4: Учет полномочий
+    externalEntity5: Управление ЭЦП
+    process1: Изменение состояний систем
+    process1.shape: Circle
+    process2: Рассылка бизнес-событий
+    process2.shape: Circle
+
+    externalEntity1 -> process1: вход в систему ДБО (Дистанционное Банковское Обслуживание)
+    externalEntity2 -> process1: состояния услуг, начисления за услуги
+    externalEntity3 -> process1: неисполненные платежи (по различным причинам), аресты на счетах (при постановке блокировки по счету и при ее снятии), движение средств по клиентскому счету
+    externalEntity4 -> process1: истечение полномочий должностного лица
+    externalEntity5 -> process1: активация ЭЦП (Электронная Цифровая Подпись) пользователя канала ДБО
+    process1 -> process2: бизнес-события изменений процессов в учетных ИС
+}
+
+Система Уведомлений {
+    externalEntity1: Подсистема уведомлений
+    externalEntity2: ETL
+    externalEntity3: Подсистема гарантированной доставки
+    externalEntity4: Отправители SMS
+    externalEntity5: Отправители Push
+    externalEntity6: UI управления операторами
+    dataStore1: РСУБД
+    dataStore1.shape: Parallelogram
+    dataStore2: PubSub
+    dataStore2.shape: Parallelogram
+    process1: Получение потока изменений услуг из Биллинга
+    process1.shape: Circle
+    process2: Фильтрация потока изменений услуг от Биллинга на наличие услуг рассылки уведомлений
+    process2.shape: Circle
+    process3: Сохранение списков пользователей и услуг в БД
+    process3.shape: Circle
+    process4: Получение потока бизнес-событий кандидатов в сообщения для уведомлений
+    process4.shape: Circle
+    process5: Фильтрация потока бизнес-событий в соответствии с подписками от Биллинга
+    process5.shape: Circle
+    process6: Сохранение в БД отфильтрованного списка бизнес-событий как сообщений для отправки уведомлений
+    process6.shape: Circle
+    process7: Определение способа уведомления
+    process7.shape: Circle
+    process8: Определение оператора отправки
+    process8.shape: Circle
+    process9: Рассылка сообщений через оператора
+    process9.shape: Circle
+    process10: Учет отправленных сообщений
+    process10.shape: Circle
+    process11: Чтение БД сохраненного отчета отправленных сообщений
+    process11.shape: Circle
+    process12: Отправка отчета о фактическом оказании услуг
+    process12.shape: Circle
+    process13: Управление операторами и правилами рассылки
+    process13.shape: Circle
+
+    externalEntity2 -> process1: kafka/поток изменений объектной модели услуг Биллинга
+    process1 -> process2
+    process2 -> process3
+    process3 -> dataStore1: pgsql/список подписок и пользователей
+    externalEntity2 -> process4: artemismq/поток бизнес-событий систем-уведомителей
+    dataStore1 -> process5: pgsql/получение списка подписчиков на услуги и списка услуг
+    process4 -> process5
+    process5 -> process6
+    process6 -> dataStore1: pgsql/список событий для рассылки
+    dataStore1 -> externalEntity1: pgsql/сформированные списки сообщений
+    externalEntity1 -> process7
+    externalEntity1 -> process8
+    externalEntity1 -> externalEntity3: pgsql/отсортированных по каналам отправки и операторам рассылки сообщения
+    externalEntity3 -> dataStore2: artemismq/запись в очередь отсортированных по каналам отправки и операторам рассылки сообщения
+    dataStore2 -> externalEntity4: artemismq/получение сообщений для воркеров для отправки через канал SMS
+    dataStore2 -> externalEntity5: artemismq/получение сообщений для воркеров для отправки через канал Push
+    externalEntity4 -> process9
+    externalEntity5 -> process9
+    externalEntity4 -> process10
+    externalEntity5 -> process10
+    process10 -> externalEntity1
+    externalEntity1 -> dataStore1: pgsql/запись отчета об оказанных услугах
+    dataStore1 -> process11: pgsql/чтение отчета оказанных услуг из БД для отправки в учетные системы
+    process11 -> externalEntity3: pgsql/лог оказанных услуг
+    externalEntity3 -> process12: kafka/поток изменений модели данных оказанных услуг для Биллинг системы напрямую в режиме nrt и для Платформы данных для формирования сверочного отчета
+    externalEntity6 -> process13: rest/управление операторами и правилами рассылки через WebUI и API сервиса
+    process13 -> dataStore1: pgsql/изменение списка операторов и правил рассылки
+}
+
+Управление уведомлениями.process -> Тарификация услуг.externalEntity1: rest/синхронный процесс активации/деактивации услуг в биллинге (например, для личного кабинета ДБО) (DevPortal)
+Управление уведомлениями.process -> Тарификация услуг.externalEntity1: kafka/асинхронный процесс активации/деактивации услуг в биллинге (например, для более сложных бизнес-процессов, подразумевающих длительные проверки возможности подключения услуги) (iPaaS)
+
+Тарификация услуг.process3 -> Система Уведомлений.process1: kafka/объектная модель услуг Биллинга (iPaaS)
+
+Уведомители.process2 -> Система Уведомлений.process4: artemismq/поток бизнес-событий для уведомлений (iPaaS)
+
+Система Уведомлений.process12 -> Тарификация услуг.process1: kafka/nrt-процесс отправки потока изменений объектной модели фактически оказанных услуг уведомлений в Биллинг (iPaaS)
+Система Уведомлений.process12 -> Тарификация услуг.process1: pgsql/чтение сверочного Витрины данных за отчетный период фактически оказанных услуг уведомлений в Биллинг (Платформа данных)

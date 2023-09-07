@@ -1,0 +1,127 @@
+<mxfile host="Electron" modified="2023-09-07T11:59:01.761Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="uwhM9XcUKKgBYSH56W9h" version="21.6.8" type="device">
+  <diagram name="NotificationsSystem" id="awEwMx6LPew-lmlHSubi">
+    <mxGraphModel dx="1114" dy="949" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fXtLzjUIHP5euoAiHCEg-1" value="" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#1ba1e2;shape=mxgraph.archimate3.application;appType=comp;archiType=square;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
+          <mxGeometry x="90" y="50" width="350" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="fXtLzjUIHP5euoAiHCEg-5" value="Подсистема: ETL" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#76608a;shape=mxgraph.archimate3.application;appType=comp;archiType=square;strokeColor=#432D57;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="264" y="90" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="fXtLzjUIHP5euoAiHCEg-6" value="notifySend-a-artemismq" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#647687;shape=mxgraph.archimate3.application;appType=interface;archiType=square;fontColor=#ffffff;strokeColor=#314354;" parent="1" vertex="1">
+          <mxGeometry x="500" y="130" width="180" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="fXtLzjUIHP5euoAiHCEg-8" value="Сервис отправки уведомлений" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#1ba1e2;shape=mxgraph.archimate3.application;appType=event;archiType=rounded;strokeColor=#006EAF;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="760" y="130" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="tVJEj3gGwOZP97PrgEpv-1" value="Подсистема: РСУБД" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#76608a;shape=mxgraph.archimate3.application;appType=comp;archiType=square;strokeColor=#432D57;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="100" y="175" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="tVJEj3gGwOZP97PrgEpv-2" value="Система Уведомлений" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="110" y="50" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tVJEj3gGwOZP97PrgEpv-3" value="Подсистема: Уведомлений" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#76608a;shape=mxgraph.archimate3.application;appType=comp;archiType=square;strokeColor=#432D57;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="100" y="90" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="tVJEj3gGwOZP97PrgEpv-4" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endFill=0;startArrow=diamondThin;startFill=1;startSize=18;edgeStyle=elbowEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="fXtLzjUIHP5euoAiHCEg-5" target="fXtLzjUIHP5euoAiHCEg-6" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="198" as="sourcePoint" />
+            <mxPoint x="570" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVJEj3gGwOZP97PrgEpv-5" value="notifyReport-a-kafka" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#647687;shape=mxgraph.archimate3.application;appType=interface;archiType=square;fontColor=#ffffff;strokeColor=#314354;" parent="1" vertex="1">
+          <mxGeometry x="500" y="220" width="180" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="tVJEj3gGwOZP97PrgEpv-6" value="notifyReport-s-dbconnect" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#647687;shape=mxgraph.archimate3.application;appType=interface;archiType=square;fontColor=#ffffff;strokeColor=#314354;" parent="1" vertex="1">
+          <mxGeometry x="500" y="310" width="180" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="tVJEj3gGwOZP97PrgEpv-7" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endFill=0;startArrow=diamondThin;startFill=1;startSize=18;edgeStyle=orthogonalEdgeStyle;" parent="1" source="GypyRK9nxt2jRtdAyA0D-3" target="tVJEj3gGwOZP97PrgEpv-5" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430" y="274" as="sourcePoint" />
+            <mxPoint x="520" y="168" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVJEj3gGwOZP97PrgEpv-8" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endFill=0;startArrow=diamondThin;startFill=1;startSize=18;edgeStyle=orthogonalEdgeStyle;" parent="1" source="GypyRK9nxt2jRtdAyA0D-3" target="tVJEj3gGwOZP97PrgEpv-6" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="424" y="243" as="sourcePoint" />
+            <mxPoint x="520" y="258" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVJEj3gGwOZP97PrgEpv-9" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=oval;startFill=1;edgeStyle=orthogonalEdgeStyle;" parent="1" source="fXtLzjUIHP5euoAiHCEg-6" target="fXtLzjUIHP5euoAiHCEg-8" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="810" y="130" as="sourcePoint" />
+            <mxPoint x="860" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVJEj3gGwOZP97PrgEpv-10" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=oval;startFill=1;edgeStyle=orthogonalEdgeStyle;" parent="1" source="tVJEj3gGwOZP97PrgEpv-6" target="GypyRK9nxt2jRtdAyA0D-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="690" y="138" as="sourcePoint" />
+            <mxPoint x="848" y="205" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVJEj3gGwOZP97PrgEpv-11" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=oval;startFill=1;edgeStyle=orthogonalEdgeStyle;" parent="1" source="tVJEj3gGwOZP97PrgEpv-5" target="GypyRK9nxt2jRtdAyA0D-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="690" y="138" as="sourcePoint" />
+            <mxPoint x="848" y="205" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GypyRK9nxt2jRtdAyA0D-1" value="Сервис отчетов об услугах" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#1ba1e2;shape=mxgraph.archimate3.application;appType=event;archiType=rounded;strokeColor=#006EAF;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="760" y="260" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="GypyRK9nxt2jRtdAyA0D-2" value="Подсистема: PubSub" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#76608a;shape=mxgraph.archimate3.application;appType=comp;archiType=square;strokeColor=#432D57;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="264" y="175" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="GypyRK9nxt2jRtdAyA0D-3" value="Подсистема: гарантированной отправки" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#76608a;shape=mxgraph.archimate3.application;appType=comp;archiType=square;strokeColor=#432D57;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="264" y="260" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="GypyRK9nxt2jRtdAyA0D-4" value="Подсистема: Отправители SMS" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#76608a;shape=mxgraph.archimate3.application;appType=comp;archiType=square;strokeColor=#432D57;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="100" y="260" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="GypyRK9nxt2jRtdAyA0D-5" value="Подсистема: Отправители Push" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#76608a;shape=mxgraph.archimate3.application;appType=comp;archiType=square;strokeColor=#432D57;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="100" y="350" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="wnji1xo7UIbhovR8xaRc-1" value="Подсистема: UI управления операторами" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#76608a;shape=mxgraph.archimate3.application;appType=comp;archiType=square;strokeColor=#432D57;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="264" y="350" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="wnji1xo7UIbhovR8xaRc-2" value="Сервис управления операторами доставки" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#1ba1e2;shape=mxgraph.archimate3.application;appType=event;archiType=rounded;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="760" y="400" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="wnji1xo7UIbhovR8xaRc-3" value="notify-ui" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#647687;shape=mxgraph.archimate3.application;appType=interface;archiType=square;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+          <mxGeometry x="500" y="400" width="180" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="wnji1xo7UIbhovR8xaRc-4" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endFill=0;startArrow=diamondThin;startFill=1;startSize=18;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="wnji1xo7UIbhovR8xaRc-1" target="wnji1xo7UIbhovR8xaRc-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="424" y="308" as="sourcePoint" />
+            <mxPoint x="510" y="348" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wnji1xo7UIbhovR8xaRc-5" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;startArrow=oval;startFill=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="wnji1xo7UIbhovR8xaRc-3" target="wnji1xo7UIbhovR8xaRc-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="690" y="348" as="sourcePoint" />
+            <mxPoint x="770" y="311" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wnji1xo7UIbhovR8xaRc-6" value="notifyRules-a-kafka" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#647687;shape=mxgraph.archimate3.application;appType=interface;archiType=square;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+          <mxGeometry x="500" y="40" width="180" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="wnji1xo7UIbhovR8xaRc-7" value="Сервис регистрации подписок" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#1ba1e2;shape=mxgraph.archimate3.application;appType=event;archiType=rounded;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="760" y="40" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="wnji1xo7UIbhovR8xaRc-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=oval;startFill=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="wnji1xo7UIbhovR8xaRc-6" target="wnji1xo7UIbhovR8xaRc-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="690" y="138" as="sourcePoint" />
+            <mxPoint x="770" y="138" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wnji1xo7UIbhovR8xaRc-9" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endFill=0;startArrow=diamondThin;startFill=1;startSize=18;edgeStyle=elbowEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="fXtLzjUIHP5euoAiHCEg-5" target="wnji1xo7UIbhovR8xaRc-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="424" y="138" as="sourcePoint" />
+            <mxPoint x="510" y="138" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
